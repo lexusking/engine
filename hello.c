@@ -1,6 +1,9 @@
 #include <stdio.h>
-int main()
+#include <string.h>
+#include <stdlib.h>
+
+int main ( int argc, char **argv )
 {
-   printf("hello\n") ;
+   printf( "hello world!\n" ) ;
    return 0 ;
 }
