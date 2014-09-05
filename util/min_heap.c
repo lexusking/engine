@@ -1,42 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <assert.h>
-#include <time.h>
-
-#define N 10
-
-// cancel assert
-//#define NDEBUG
-
-typedef int data_type_t ;
-typedef struct min_heap
-{
-	int cur ;
-	int size ;
-	data_type_t *data ;
-
-}min_heap_t ;
-
-
-// extern function , can use in other file.
-int heap_elem_greater( data_type_t a, data_type_t b ) ;
-void heap_init( min_heap_t **h, int max_size ) ;
-min_heap_t* heap_build( data_type_t *x, int n ) ;
-void heap_push( min_heap_t *h, data_type_t x ) ;
-data_type_t heap_pop( min_heap_t *h ) ;
-void heap_destroy(min_heap_t *h ) ;
+#include "min_heap.h"
 
 // static function , just use in this file.
-static void heap_shift_up( min_heap_t *h, int hole ) ;
-static void heap_shift_down( min_heap_t *h, int hole ) ;
-
-int heap_elem_greater( data_type_t a, data_type_t b )
-{
-	return (a>b)? 1 : 0 ;
-}
-
-
 static void heap_shift_up( min_heap_t *h, int hole )
 {
 	data_type_t temp = h->data[hole] ;
@@ -86,6 +50,11 @@ static void heap_shift_down( min_heap_t *h, int hole )
 
 	h->data[i] = temp ;
 
+}
+
+int heap_elem_greater( data_type_t a, data_type_t b )
+{
+	return (a>b)? 1 : 0 ;
 }
 
 
@@ -173,55 +142,3 @@ min_heap_t* heap_build( data_type_t *x, int n )
 	return h ;
 }
 
-int main(int argc, char *argv[])
-{
-	srand((int)time(NULL)) ;
-	data_type_t x[N] = {0} ;
-	int result = 0 ;
-	int i = 0 ;
-	int j = 0 ;
-	for( ; i < N; i++ )
-	{
-		x[i] = rand()%100 ;
-	}
-
-	min_heap_t *h = heap_build( x, N ) ;
-
-	printf("before build:\n") ;
-	for( i = 0 ; i < N; i++ )
-	{
-		printf("%d ", x[i] ) ;
-	}
-	printf( "\nafter build:\n" ) ;
-	
-	for( i = 1; i <= h->cur; i++ )
-	{
-		printf("%d ", h->data[i] ) ;
-	}
-
-	printf("\npush: 200\n") ;
-
-	heap_push(h, 200) ;
-	for( i = 1; i <= h->cur; i++ )
-	{
-		printf("%d ", h->data[i] ) ;
-	}
-	
-	printf("\n\n") ;
-	for( i = h->cur; i > 0; i-- )
-	{
-		result = heap_pop(h) ;
-		printf("pop,result = %d\ndata:",result) ;
-		for( j = 1; j <=  h->cur; j++ )
-		{
-			printf("%d  ", h->data[j]) ;
-		}
-		printf("\n\n");
-	}
-	printf("\n\n");
-
-	heap_destroy( h ) ;
-
-	return 0 ;
-	
-}
