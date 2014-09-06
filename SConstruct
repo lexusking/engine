@@ -24,6 +24,9 @@ trieTestFiles = [ 'test/trie_test.c',
 
 sortTestFiles = [ 'test/sort_test.c' ]
 
+bloomTestFiles = [ 'test/bloom_test.c',
+                   'util/bloom.c' ]
+
 env.Program('main/md5_test',source=md5TestFiles,CPPPATH=includePath)
 
 env.Program('main/min_heap_test',source=minHeapTestFiles,CPPPATH=includePath)
@@ -33,4 +36,6 @@ env.Program('main/rbtree_test',source=rbtreeTestFiles,CPPPATH=includePath)
 env.Program('main/trie_test',source=trieTestFiles,CPPPATH=includePath)
 
 env.Program('main/sort_test',source=sortTestFiles,CPPPATH=includePath)
+
+env.Program('main/bloom_test',source=bloomTestFiles,CPPPATH=includePath)
 
