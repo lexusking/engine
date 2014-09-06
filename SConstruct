@@ -22,6 +22,8 @@ rbtreeTestFiles = [ 'test/rbtree_test.c',
 trieTestFiles = [ 'test/trie_test.c',
                   'util/trie.c' ]
 
+sortTestFiles = [ 'test/sort_test.c' ]
+
 env.Program('main/md5_test',source=md5TestFiles,CPPPATH=includePath)
 
 env.Program('main/min_heap_test',source=minHeapTestFiles,CPPPATH=includePath)
@@ -29,4 +31,6 @@ env.Program('main/min_heap_test',source=minHeapTestFiles,CPPPATH=includePath)
 env.Program('main/rbtree_test',source=rbtreeTestFiles,CPPPATH=includePath)
 
 env.Program('main/trie_test',source=trieTestFiles,CPPPATH=includePath)
+
+env.Program('main/sort_test',source=sortTestFiles,CPPPATH=includePath)
 
