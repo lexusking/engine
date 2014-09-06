@@ -19,9 +19,14 @@ minHeapTestFiles = [ 'test/min_heap_test.c',
 rbtreeTestFiles = [ 'test/rbtree_test.c',
                     'util/util_rbtree.c'  ]
 
+trieTestFiles = [ 'test/trie_test.c',
+                  'util/trie.c' ]
+
 env.Program('main/md5_test',source=md5TestFiles,CPPPATH=includePath)
 
 env.Program('main/min_heap_test',source=minHeapTestFiles,CPPPATH=includePath)
 
 env.Program('main/rbtree_test',source=rbtreeTestFiles,CPPPATH=includePath)
+
+env.Program('main/trie_test',source=trieTestFiles,CPPPATH=includePath)
 
